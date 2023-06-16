@@ -4,17 +4,19 @@
     Simulador interactivo
     ✔Utilizar funciones
 */
+let usuario = prompt("Hola! Ingresá tu nombre de usuario para que podamos reconocerte😁")
+console.log("¡Bienvenid@ "+ usuario + "!")
 
 function elegirProducto() {
     let respuesta = confirm("¿Deseas conocer algún precio?")
     
     if (respuesta === true){
         let producto = prompt("Ingrese el número del ítem a comprar: ")
-        seleccionadorProducto(producto)
+        seleccionadorProducto(producto)   
     }
 
     else{
-        console.log("¡Esperamos tu consulta!❤")
+        console.log("¡Esperamos tu compra!❤")
     }
 }
 
@@ -45,6 +47,10 @@ function seleccionadorProducto(opcion){
 
         case "5":
             console.warn("El precio del bolson surtido es de $700")
+            break;
+
+        case "6": 
+            console.warn("Estamos en proceso de construcción del resto de nuestro sitio web. Disculpe las molestias🙏")
             break;
 
         default:
