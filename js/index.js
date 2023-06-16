@@ -1,11 +1,17 @@
 /*
     ✔Algoritmo con un condicional
     ✔Algoritmo con un ciclo iterativo
-    Simulador interactivo
+    ✔Simulador interactivo
     ✔Utilizar funciones
 */
 let usuario = prompt("Hola! Ingresá tu nombre de usuario para que podamos reconocerte😁")
-console.log("¡Bienvenid@ "+ usuario + "!")
+if (usuario === "" || usuario == null){
+    console.warn("No pudimos reconocerte! Por favor, recargá la página e ingresa tu usuario.")
+}
+
+else{
+    console.log("¡Bienvenid@ "+ usuario + "!")
+}
 
 function elegirProducto() {
     let respuesta = confirm("¿Deseas conocer algún precio?")
