@@ -30,6 +30,7 @@ function mostrarPromociones(){
     for (i=2; i<=4; i++){
         console.log("Llevando "+ i + " productos tenes un " +i*5 + "% de descuento!")
     }
+    console.log("A partir de 5 productos en adelante, el descuento sigue siendo del 20%.")
 }
 
 function seleccionadorProducto(opcion){
