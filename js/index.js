@@ -1,69 +1,48 @@
-/*
-    ✔Algoritmo con un condicional
-    ✔Algoritmo con un ciclo iterativo
-    ✔Simulador interactivo
-    ✔Utilizar funciones
-*/
+const carrito=[]
+
+const arrayProductos=   [{id:1, nombre: "Anillo de plata", precio: 2600},
+                        {id:2, nombre: "Anillo de oro", precio: 3500},
+                        {id:3, nombre: "Collar de plata", precio: 3600},
+                        {id:4, nombre: "Collar de oro", precio: 4100},
+                        {id:5, nombre: "Aros de acero quirúrgico", precio: 1600},
+                        {id:6, nombre: "Aros de plata", precio: 2300},
+                        {id:7, nombre: "Aros de oro", precio: 3000}
+]
+
+
 let usuario = prompt("Hola! Ingresá tu nombre de usuario para que podamos reconocerte😁")
 if (usuario === "" || usuario == null){
     console.warn("No pudimos reconocerte! Por favor, recargá la página e ingresa tu usuario.")
-}
-
-else{
+}else{
     console.log("¡Bienvenid@ "+ usuario + "!")
 }
 
-function elegirProducto() {
-    let respuesta = confirm("¿Deseas conocer algún precio?")
+function buscarProducto(codigo){
+    let resultado = arrayProductos.find((prod) => prod.id === parseInt(codigo))
+    return resultado
+}
+
+function finalizarCompra(){
+    const shoppingcart = new Compra(carrito)
+    console.log(`El costo total de su compra es de $ ${shoppingcart.obtenerSubtotal()}. Muchas gracias por su compra😊`)
     
-    if (respuesta === true){
-        let producto = prompt("Ingrese el número del ítem a comprar: ")
-        seleccionadorProducto(producto)   
-    }
+}
 
+function comprar(){
+    let codigo = parseInt(prompt("Ingresa el código del accesorio que quieras comprar"))
+    let accesorio = buscarProducto(codigo)
+    if (accesorio !== undefined){
+        carrito.push(accesorio)
+        alert(`${accesorio.nombre.toUpperCase()} fue agregado al carrito correctamente!`)
+        let respuesta = confirm ("Deseas elegir otro accesorio?")
+        if (respuesta === true){
+            comprar()
+        }else{
+            console.table(carrito)
+            finalizarCompra()
+        }
+    }  
     else{
-        console.log("¡Esperamos tu compra!❤")
+        alert("No se encontró un código válido. Refresque la página para poder comenzar de nuevo con su compra")
     }
 }
-
-function mostrarPromociones(){
-    for (i=2; i<=4; i++){
-        console.log("Llevando "+ i + " productos tenes un " +i*5 + "% de descuento!")
-    }
-    console.log("A partir de 5 productos en adelante, el descuento sigue siendo del 20%.")
-}
-
-function seleccionadorProducto(opcion){
-
-    switch(opcion){
-        case "1":
-            console.warn("El precio de la bolsa de caramelos surtidos es de $200")
-            break;
-
-        case "2":
-            console.warn("El precio de la yerba 1kg es de $600")
-            break;
-
-        case "3":
-            console.warn("El precio del paquete de arroz es es de $350")
-            break;
-
-        case "4":
-            console.warn("El precio del kilo de nalga es de $800! Oferta válida hasta el 02/07.")
-            break;
-
-        case "5":
-            console.warn("El precio del bolson surtido es de $700")
-            break;
-
-        case "6": 
-            console.warn("Estamos en proceso de construcción del resto de nuestro sitio web. Disculpe las molestias🙏")
-            break;
-
-        default:
-            console.error("Elegiste un producto que no está en la lista.")
-            break;
-    }
-}
-
-

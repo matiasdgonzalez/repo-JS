@@ -16,19 +16,35 @@ body{
     
 }
 
-header{
-    text-align: center;
-    text-decoration: underline;
-    color: rgb(245, 114, 114);
+.flex-container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: black;
 }
+
+.flex-container div{
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.flex-container div a{
+    text-decoration: none;
+}
+
 main{
     width:100%;
     height:100%;
-    margin: 20px;
     color: rgb(0, 0, 0);
 }
 
-nav ul{
+.opciones{
+    margin:10px;
+    padding: 10px;
+    background-color: cyan;
+    width:fit-content;
+}
+.opciones ul{
     display:flex;
     flex-direction: column;
     list-style-type: none;
