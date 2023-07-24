@@ -3,39 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Carrito</title>
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/carrito-compra.js"></script>
+    <script defer src="./js/carrito-compra.js"></script>
     <script defer src="./js/index.js"></script>
+    <script defer src="js/checkout.js"></script>
 </head>
 <body>
     <header>
         <div class="flex-container">
-            <div><h1>Tienda de accesorios Diamand</h1></div>
+            <div><a href="./index.html"><h1>Tienda de accesorios Diamand</h1></a></div>
             <div><a href="./carrito.html">🛒Ver carrito</a></div>
         </div>
     </header>
-
     <main>
-        <hr>
-        <input type="search" id="inputSearch" placeholder="Buscá tu producto">
-        <div class="toast-msg"></div>
-        <hr>
-        <div class="alinear-centro">
-            <table class="opciones">
+        <div class="carrito">
+            <h1>Carrito</h1>
+        </div>
+        <div class="tablaCarrito">
+            <table>
                 <thead>
                     <tr>
                         <th>Código</th>
                         <th>Imagen</th>
                         <th>Descripción</th>
                         <th>Importe</th>
-                        <th>Agregar</th>
                     </tr>
                 </thead>
-                <tbody id="tablaOpciones">
-    
+                <tbody>
                 </tbody>
             </table>
+        </div>
+        <div>
+            <button class="borrarCarrito" id="borrarCarro">Borrar carrito ❌</button>
         </div>
     </main>
 </body>

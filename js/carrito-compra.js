@@ -8,3 +8,19 @@ class Compra{
         }
     }
 }
+
+function guardarEnCarrito(){
+    if(carrito.length>0){
+        localStorage.setItem("MiCompra", JSON.stringify(carrito))
+    }
+}
+
+function recuperarCarritoLocalStorage(){
+    if (localStorage.getItem("MiCompra")){
+        return JSON.parse(localStorage.getItem("MiCompra"))
+    }else{
+        return []
+    }
+}
+
+const carrito = recuperarCarritoLocalStorage()

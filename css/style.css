@@ -1,3 +1,5 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css');
+
 *{
     box-sizing: border-box;
     padding:0;
@@ -5,17 +7,20 @@
 }
 
 html{
-    height:100%;
+    width:100%;
 }
 
 body{
     width: 100%;
-    height: auto;
+    height: 100%;
     background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
     background-repeat: no-repeat;
-    
 }
 
+h1{
+    color: white;
+    text-decoration: underline;
+}
 .flex-container{
     display:flex;
     flex-direction: row;
@@ -38,23 +43,71 @@ main{
     color: rgb(0, 0, 0);
 }
 
+input{
+    display:flex; 
+    justify-content: center;
+    width: 95% !important;
+    height: 40px;
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.alinear-centro{
+    display: flex;
+    justify-content:center;
+}
 .opciones{
+    display:flex;
+    flex-direction: column;
     margin:10px;
     padding: 10px;
     background-color: cyan;
     width:fit-content;
 }
-.opciones ul{
-    display:flex;
-    flex-direction: column;
-    list-style-type: none;
-    text-decoration: none;
-    padding: 20px;
-    margin: 10px;
-    gap: 20px;
-}
+
 
 .instruccionUso{
     padding: 20px;
+}
+
+.emoji-image {
+    font-size: 24px;
+}
+
+thead {
+    font-weight: 800;
+    font-size: larger;
+}
+
+tbody tr:hover {
+    background: rgba(0, 0, 0, 0.679);
+}
+
+.button-big-emoji {
+    font-size: x-large;
+}
+
+.toast-msg {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    height: 46px;
+    width: 100%;
+    background-color: darkslateblue;
+    color: whitesmoke;
+    border-radius: 6px;
+}
+
+.carrito h1{
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+.tablaCarrito{
+    margin:10px;
+    padding:5px;
 }
 
