@@ -19,13 +19,13 @@ body{
 
 h1{
     color: white;
-    text-decoration: underline;
+    text-decoration: none;
 }
 .flex-container{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-    color: black;
+
 }
 
 .flex-container div{
@@ -44,14 +44,15 @@ main{
 }
 
 input{
+
     display:flex; 
-    justify-content: center;
     width: 95% !important;
     height: 40px;
     text-align: center;
-    margin: 5px;
+    margin:25px;
     padding: 5px;
     border-radius: 5px;
+    font-size:larger;
 }
 
 .alinear-centro{
@@ -102,7 +103,7 @@ tbody tr:hover {
 
 .carrito h1{
     color: black;
-    text-decoration: none;
+    text-decoration: underline;
     text-align: center;
 }
 
@@ -111,3 +112,19 @@ tbody tr:hover {
     padding:5px;
 }
 
+.div-button{
+    display:flex;
+    justify-content: center;
+}
+
+.comprarProd{
+    display:flex;
+    align-items: center;
+    margin: 20px;
+}
+
+.borrarCarrito{
+    display:flex;
+    align-items: center;
+    margin: 20px;
+}

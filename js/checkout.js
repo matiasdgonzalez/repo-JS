@@ -22,9 +22,43 @@ function cargarListaCarrito(array){
 }
 cargarListaCarrito(carrito)
 
-
-
 const botonBorrar = document.querySelector('button#borrarCarro')
 botonBorrar.addEventListener('click', ()=> {
-return localStorage.removeItem('MiCompra')
+    Swal.fire({
+        icon: 'info',
+        title: '¿Deseas borrar el carrito?',
+        showConfirmButton: true,
+        showDenyButton: true,
+        confirmButtonText: 'Borrar',
+        denyButtonText: `Cancelar`,
+        }).then((result) => {        
+        if (result.isConfirmed) {
+            Swal.fire('Borrado con éxito', '', 'success')
+            localStorage.removeItem('MiCompra')
+            tableBody.innerHTML = ""
+        } else if (result.isDenied) {
+            Swal.fire('No borraste el carrito', '', 'info')
+        }
+    })
+})
+
+
+const botonComprar = document.querySelector('button#comprarProd')
+botonComprar.addEventListener('click', ()=>{
+    Swal.fire({
+        icon: 'info',
+        title: '¿Deseas confirmar la compra?',
+        showConfirmButton: true,
+        showDenyButton: true,
+        confirmButtonText: 'Confirmar',
+        denyButtonText: `Cancelar`,
+        }).then((result) => {        
+        if (result.isConfirmed) {
+            Swal.fire('Gracias por tu compra 😄', '', 'success')
+            localStorage.removeItem('MiCompra')
+            tableBody.innerHTML = ""
+        } else if (result.isDenied) {
+            Swal.fire('Cancelaste tu compra', '', 'cancel')
+        }
+    })
 })

@@ -13,7 +13,7 @@ const arrayProductos=   [{id:1,imagen: "💍" ,nombre: "Anillo de plata", precio
 
 const tablaOpciones = document.querySelector("#tablaOpciones")
 const inputBuscar = document.querySelector("#inputSearch")
-const divToast = document.querySelector("div.toast-msg")
+const URL = 'js/prendas.json'
 
 function crearFilaHTML(producto){
     return ` <tr>
@@ -31,7 +31,11 @@ function activarClickEnBotonesProductos(){
         boton.addEventListener("click", ()=>{
             let producto = arrayProductos.find((prod)=> prod.id === parseInt(boton.id))
             carrito.push(producto)
-            divToast.textContent = "Se agregó un producto al carrito: " +producto.nombre
+            Swal.fire({
+                icon: 'success',
+                title: '¡Agregado correctamente!',
+                text: 'Agregaste ' +producto.nombre+ " al carrito",
+            })
             guardarEnCarrito() 
         })
     })
@@ -43,12 +47,11 @@ function cargarProductos(array){
         array.forEach((producto)=> {tablaOpciones.innerHTML += crearFilaHTML(producto)})
         activarClickEnBotonesProductos()
     }else{
-        divToast.textContent = "No hay productos para mostrar."
     }
 }
 
-inputBuscar.addEventListener('search', ()=>{
-    if (inputBuscar.value.trim() !== ""){
+inputBuscar.addEventListener('search',()=>{
+    if(inputBuscar.value.trim() !== ""){
         let arrayResultante = arrayProductos.filter((producto) => producto.nombre.toLowerCase().includes(inputBuscar.value.trim().toLowerCase()))
         cargarProductos(arrayResultante)
     }else{
@@ -57,3 +60,12 @@ inputBuscar.addEventListener('search', ()=>{
 })
 
 cargarProductos(arrayProductos)
+
+function obtenerPrendas(){
+    fetch(URL)
+    .then((response)=>response.json())
+    .then((data) => arrayProductos.push(...data))
+    .then(()=> cargarProductos(arrayProductos))
+    .catch((error) => container.innerHTML=retornarCardError())
+}
+obtenerPrendas()

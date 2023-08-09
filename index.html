@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/carrito-compra.js"></script>
     <script defer src="./js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <header>
         <div class="flex-container">
-            <div><h1>Tienda de accesorios Diamand</h1></div>
+            <div><h1><a href="/index.html">Tienda de accesorios Diamand</a></h1></div>
             <div><a href="./carrito.html">🛒Ver carrito</a></div>
         </div>
     </header>
@@ -19,7 +20,6 @@
     <main>
         <hr>
         <input type="search" id="inputSearch" placeholder="Buscá tu producto">
-        <div class="toast-msg"></div>
         <hr>
         <div class="alinear-centro">
             <table class="opciones">
@@ -33,7 +33,6 @@
                     </tr>
                 </thead>
                 <tbody id="tablaOpciones">
-    
                 </tbody>
             </table>
         </div>
