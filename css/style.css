@@ -13,18 +13,22 @@ html{
 body{
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    background-image: url(../assets/img/background.jpg);
     background-repeat: no-repeat;
 }
 
-h1{
-    color: white;
-    text-decoration: none;
+.flex-container div h1{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style:italic;
+    font-size: 50px;
+    font-weight: bold;
 }
+
 .flex-container{
     display:flex;
+    align-items:center;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 
 }
 
@@ -34,18 +38,31 @@ h1{
 }
 
 .flex-container div a{
+    color:rgb(0, 0, 0);
     text-decoration: none;
+}
+
+.flex-container div a:hover{
+    color:rgb(102, 143, 94);
+    text-decoration: underline;
+}
+
+.carrito-style{
+    font-size: 20px;
+    font-weight: bold;
 }
 
 main{
     width:100%;
     height:100%;
     color: rgb(0, 0, 0);
+    font-size: 18px;
+    font-weight: bold;
 }
 
 input{
-
-    display:flex; 
+    display:flex;
+    align-items:center; 
     width: 95% !important;
     height: 40px;
     text-align: center;
@@ -59,12 +76,13 @@ input{
     display: flex;
     justify-content:center;
 }
+
 .opciones{
     display:flex;
     flex-direction: column;
     margin:10px;
     padding: 10px;
-    background-color: cyan;
+    background-image: url(../assets/img/fondo-tabla.jpg);
     width:fit-content;
 }
 
@@ -83,27 +101,15 @@ thead {
 }
 
 tbody tr:hover {
-    background: rgba(0, 0, 0, 0.679);
+    background: rgba(102, 143, 94, 0.678);
 }
 
 .button-big-emoji {
     font-size: x-large;
 }
 
-.toast-msg {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    height: 46px;
-    width: 100%;
-    background-color: darkslateblue;
-    color: whitesmoke;
-    border-radius: 6px;
-}
-
 .carrito h1{
-    color: black;
-    text-decoration: underline;
+    color: rgb(20, 20, 20);
     text-align: center;
 }
 

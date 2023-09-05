@@ -32,12 +32,13 @@ botonBorrar.addEventListener('click', ()=> {
         confirmButtonText: 'Borrar',
         denyButtonText: `Cancelar`,
         }).then((result) => {        
-        if (result.isConfirmed) {
+        let carrito = recuperarCarritoLocalStorage()    
+        if (result.isConfirmed && carrito.length>0) {
             Swal.fire('Borrado con éxito', '', 'success')
             localStorage.removeItem('MiCompra')
             tableBody.innerHTML = ""
-        } else if (result.isDenied) {
-            Swal.fire('No borraste el carrito', '', 'info')
+        } else if (carrito.length == 0 && result.isConfirmed) {
+            Swal.fire('No hay productos para borrar', '', 'info')
         }
     })
 })
@@ -52,13 +53,14 @@ botonComprar.addEventListener('click', ()=>{
         showDenyButton: true,
         confirmButtonText: 'Confirmar',
         denyButtonText: `Cancelar`,
-        }).then((result) => {        
-        if (result.isConfirmed) {
+        }).then((result) => {   
+        let carrito = recuperarCarritoLocalStorage()    
+        if (result.isConfirmed && carrito.length>0) {
             Swal.fire('Gracias por tu compra 😄', '', 'success')
             localStorage.removeItem('MiCompra')
             tableBody.innerHTML = ""
-        } else if (result.isDenied) {
-            Swal.fire('Cancelaste tu compra', '', 'cancel')
+        } else if(carrito.length == 0 && result.isConfirmed){
+            Swal.fire('No hay productos en el carrito', '', 'error')
         }
     })
 })

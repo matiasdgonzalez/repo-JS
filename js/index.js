@@ -1,19 +1,8 @@
-const arrayProductos=   [{id:1,imagen: "💍" ,nombre: "Anillo de plata", precio: 2600},
-                        {id:2, imagen: "💍",nombre: "Anillo de oro", precio: 3500},
-                        {id:3, imagen: "📿",nombre: "Collar de plata", precio: 3600},
-                        {id:4, imagen: "📿",nombre: "Collar de oro", precio: 4100},
-                        {id:5, imagen: "💎",nombre: "Aros de acero quirúrgico", precio: 1600},
-                        {id:6, imagen: "💎",nombre: "Aros de plata", precio: 2300},
-                        {id:7, imagen: "💎",nombre: "Aros de oro", precio: 3000},
-                        {id:8, imagen: "✊", nombre: "Esclava de acero quirúrgico", precio: 6500},
-                        {id:9, imagen: "📿", nombre: "Choker estilizado", precio: 5000},
-                        {id:10, imagen: "👙", nombre: "Conjunto lencería", precio: 16000}
-]
-
-
 const tablaOpciones = document.querySelector("#tablaOpciones")
 const inputBuscar = document.querySelector("#inputSearch")
-const URL = 'js/prendas.json'
+const ACC= 'js/accesorios.json'
+
+let arrayProductos = []
 
 function crearFilaHTML(producto){
     return ` <tr>
@@ -28,7 +17,8 @@ function crearFilaHTML(producto){
 function activarClickEnBotonesProductos(){
     const botones = document.querySelectorAll("button.button-outline.button-big-emoji")
     botones.forEach((boton) => {
-        boton.addEventListener("click", ()=>{
+        boton.addEventListener("click", (e)=>{
+            console.log(e)
             let producto = arrayProductos.find((prod)=> prod.id === parseInt(boton.id))
             carrito.push(producto)
             Swal.fire({
@@ -38,18 +28,20 @@ function activarClickEnBotonesProductos(){
             })
             guardarEnCarrito() 
         })
-    })
+})
 
 }
-function cargarProductos(array){
-    tablaOpciones.innerHTML = ""
-    if(array.length>0){
-        array.forEach((producto)=> {tablaOpciones.innerHTML += crearFilaHTML(producto)})
-        activarClickEnBotonesProductos()
-    }else{
+function cargarProductos(array) {
+    if (tablaOpciones) {
+        tablaOpciones.innerHTML = ""
+        if (array.length > 0) {
+            array.forEach((producto) => { tablaOpciones.innerHTML += crearFilaHTML(producto) })
+            activarClickEnBotonesProductos()
+        }
     }
 }
 
+if(inputBuscar){
 inputBuscar.addEventListener('search',()=>{
     if(inputBuscar.value.trim() !== ""){
         let arrayResultante = arrayProductos.filter((producto) => producto.nombre.toLowerCase().includes(inputBuscar.value.trim().toLowerCase()))
@@ -58,14 +50,19 @@ inputBuscar.addEventListener('search',()=>{
         cargarProductos(arrayProductos)
     }
 })
+}
 
-cargarProductos(arrayProductos)
 
 function obtenerPrendas(){
-    fetch(URL)
-    .then((response)=>response.json())
-    .then((data) => arrayProductos.push(...data))
-    .then(()=> cargarProductos(arrayProductos))
-    .catch((error) => container.innerHTML=retornarCardError())
+    fetch(ACC)
+    .then((response)=>{
+        return response.json()
+    })
+    .catch((error) => console.error("Se ha producido un error al cargar los productos: "+ error))
+    .then((data) => {
+        arrayProductos.push(...data)
+        cargarProductos(arrayProductos)
+    })
+    .catch((error) => console.error("Se ha producido un error al cargar los productos: "+ error))
 }
 obtenerPrendas()
